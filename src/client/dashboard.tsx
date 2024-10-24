@@ -94,17 +94,15 @@ function DashBoard() {
         <Routes>
           {_.map(sections, (section) => (
             <>
-            <Route
-              key={section.name}
-              path={section.route}
-              element={<section.element />}
-            />
-            <Route
-              key={section.name + 'Device'}
-              path={`${section.route}/:deviceId`}
-              element={<section.element />}
-            />
-          </>
+              <Route
+                path={section.route}
+                element={<section.element/>}
+              />
+              <Route
+                path={`${section.route}/:deviceId`}
+                element={<section.element/>}
+              />
+            </>
           ))}
         </Routes>
       </FleetContextProvider>
