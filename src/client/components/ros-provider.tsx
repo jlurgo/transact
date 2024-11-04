@@ -7,6 +7,8 @@ import { getLogger} from '@transitive-sdk/utils-web';
 const log = getLogger('ROSProvider');
 log.setLevel('debug');
 
+const host = import.meta.env.VITE_HOST; // Transitive deployment
+const secure = !import.meta.env.VITE_INSECURE;
 
 export const ROSContext = createContext({});
 
@@ -40,7 +42,7 @@ const ProviderWithROS = ({ children, ros1Topics }) => {
 const ProviderWithJwt = ({children}) => {
   const jwt = useContext(JWTContext);
   return(
-    <CapabilityContextProvider jwt={jwt}>
+    <CapabilityContextProvider jwt={jwt} host={host} ssl={secure}>
       {children}
     </CapabilityContextProvider>
   );

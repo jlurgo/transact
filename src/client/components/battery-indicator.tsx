@@ -149,7 +149,7 @@ export const BatteryIndicator = ({device}) => {
 // const BatteryIndicatorProvidedWithJwt = () => {
 //   const jwt = useContext(JWTContext);
 //   return(
-//     <CapabilityContextProvider jwt={jwt}>
+//     <CapabilityContextProvider jwt={jwt} host={host} ssl={secure}>
 //       <BatteryIndicatorProvidedWithCapability />
 //     </CapabilityContextProvider>
 //   );

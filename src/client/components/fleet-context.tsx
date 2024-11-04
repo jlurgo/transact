@@ -13,6 +13,7 @@ const log = getLogger('FleetContext');
 log.setLevel('debug');
 
 const host = import.meta.env.VITE_HOST; // Transitive deployment
+const secure = !import.meta.env.VITE_INSECURE;
 const transitiveId = import.meta.env.VITE_TRANSITIVE_USER;
 const SSLs = import.meta.env.VITE_INSECURE ? '' : 's';
 const mqttUrl = `ws${SSLs}://mqtt.${host}`;
@@ -65,7 +66,7 @@ const ProviderWithRos = ({ children }) => {
 const ProviderWithJwt = ({children}) => {
   const jwt = useContext(JWTContext);
   return(
-    <CapabilityContextProvider jwt={jwt}>
+    <CapabilityContextProvider jwt={jwt} host={host} ssl={secure}>
       {children}
     </CapabilityContextProvider>
   );
